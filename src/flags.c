@@ -488,7 +488,7 @@ static int bot2str(char *string, int bot)
 {
   char x = 'a', *old = string;
 
-  while (x < 'v') {
+  while (x <= 'z') {
     if (bot & 1)
       *string++ = x;
     x++;
@@ -790,6 +790,18 @@ static int botfl_set(struct userrec *u, struct user_entry *e, void *buf)
       atr &= ~(BOT_HUB | BOT_REJECT);
     if (atr & BOT_ALT)
       atr &= ~(BOT_ALT | BOT_REJECT);
+    if (atr & BOT_SHBAN)
+      atr &= ~(BOT_SHBAN | BOT_REJECT);
+    if (atr & BOT_SHEXEMPT)
+      atr &= ~(BOT_SHEXEMPT | BOT_REJECT);
+    if (atr & BOT_SHIGN)
+      atr &= ~(BOT_SHIGN | BOT_REJECT);
+    if (atr & BOT_SHINV)
+      atr &= ~(BOT_SHINV | BOT_REJECT);
+    if (atr & BOT_SHCHAN)
+      atr &= ~(BOT_SHCHAN | BOT_REJECT);
+    if (atr & BOT_SHUSER)
+      atr &= ~(BOT_SHUSER | BOT_REJECT);
   }
   if (!(atr & BOT_SHARE))
     atr &= ~BOT_GLOBAL;
