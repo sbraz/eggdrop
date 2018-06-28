@@ -17,7 +17,7 @@ modules: ../../../assoc.$(MOD_EXT)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -DMAKING_MODS -c $(srcdir)/assoc.c && mv -f assoc.o ../
 
 ../../../assoc.$(MOD_EXT): ../assoc.o
-	$(LD) -o ../../../assoc.$(MOD_EXT) ../assoc.o $(XLIBS) $(MODULE_XLIBS) && $(STRIP) ../../../assoc.$(MOD_EXT)
+	$(LD) $(CFLAGS) $(LDFLAGS) -o ../../../assoc.$(MOD_EXT) ../assoc.o $(XLIBS) $(MODULE_XLIBS) && $(STRIP) ../../../assoc.$(MOD_EXT)
 
 depend:
 	$(CC) $(CFLAGS) -MM $(srcdir)/assoc.c -MT ../assoc.o > .depend
